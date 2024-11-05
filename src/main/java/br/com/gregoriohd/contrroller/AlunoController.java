@@ -23,8 +23,14 @@ public class AlunoController {
 	@Autowired
 	private AlunoService alunoService;
 
+	@PostMapping("/serie/{id}")
+	public ResponseEntity<Aluno> salvarAlunoSerie(@RequestBody Aluno aluno, @PathVariable Long id) {
+		alunoService.salvarSerie(aluno, id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(aluno);
+	}
+	
 	@PostMapping
-	public ResponseEntity<Aluno> salvarAluno(@RequestBody Aluno aluno) {
+	public ResponseEntity<Aluno> salvarAluno(@RequestBody Aluno aluno, @PathVariable Long id) {
 		alunoService.salvar(aluno);
         return ResponseEntity.status(HttpStatus.CREATED).body(aluno);
 	}
