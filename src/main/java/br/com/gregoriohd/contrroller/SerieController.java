@@ -15,14 +15,14 @@ import br.com.gregoriohd.service.SerieService;
 @RestController
 @RequestMapping("/series")
 public class SerieController {
-	
+
 	@Autowired
 	private SerieService serieService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Serie>> obterSeries() {
-		
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(serieService.obterSeries());
+
+		return ResponseEntity.status(HttpStatus.OK).body(serieService.obterSeries());
 
 	}
 
