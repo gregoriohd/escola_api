@@ -1,7 +1,6 @@
 package br.com.gregoriohd.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,21 +43,6 @@ public class AlunoService {
 	@Transactional(readOnly = true)
 	public List<Aluno> obterAlunos() {
 		return alunoRepository.findAll();
-	}
-	
-	@Transactional(readOnly = false)
-	public Aluno atualizar(Long id, Aluno aluno) {
-		Optional<Aluno> alunoFind = alunoRepository.findById(id);
-		
-		if(!alunoFind.isPresent()) {
-			return null;
-		}
-		aluno.setId(alunoFind.get().getId());
-		
-		alunoRepository.save(aluno);
-		
-		return aluno;
-		
 	}
 	
 	@Transactional(readOnly = false)
